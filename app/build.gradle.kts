@@ -55,6 +55,7 @@ dependencies {
     // Retrofit
     implementation(libs.retrofit.retrofit)
     implementation(libs.retrofit.converter)
+    implementation(libs.retrofit.scalars)
     implementation(libs.retrofit.adapter)
 
     // Navigation
@@ -64,5 +65,8 @@ dependencies {
     //Rxjava
     implementation(libs.rxjava.rxandroid)
     implementation(libs.rxjava.rxjava)
+
+    implementation(libs.glide)
+    annotationProcessor(libs.glide.compiler)
 
 }

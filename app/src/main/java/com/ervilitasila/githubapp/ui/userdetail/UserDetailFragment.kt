@@ -1,4 +1,4 @@
-package com.ervilitasila.githubapp.ui
+package com.ervilitasila.githubapp.ui.userdetail
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.ervilitasila.githubapp.R
 
-class DatailUserFragment : Fragment() {
+class UserDetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

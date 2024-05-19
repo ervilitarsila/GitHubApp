@@ -1,21 +1,19 @@
-package com.ervilitasila.githubapp.ui.adapters
+package com.ervilitasila.githubapp.ui.home
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.ervilitasila.githubapp.R
 import com.ervilitasila.githubapp.databinding.ItemUserBinding
 import com.ervilitasila.githubapp.model.User
 
 class UserAdapters(
     var context: Context?,
-    var userList: ArrayList<User>
+    var userList: List<User>
 ) : RecyclerView.Adapter<UserAdapters.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val viewHolder = LayoutInflater.from(context).inflate(R.layout.item_user, parent, false)
@@ -31,7 +29,11 @@ class UserAdapters(
 
         with(holder) {
             viewBinding.userName.text = user.login
-            viewBinding.userProfile.setImageResource(R.drawable.splash)
+            Glide.with(holder.itemView)
+                .load(user.avatar_url)
+                .error(R.drawable.splash_bg)
+                .into(viewBinding.userProfile)
+
             viewBinding.itemUser.setOnClickListener{
                 Toast.makeText(context, user.login, Toast.LENGTH_LONG).show()
             }
@@ -41,5 +43,4 @@ class UserAdapters(
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val viewBinding = ItemUserBinding.bind(itemView)
     }
-
 }
