@@ -16,6 +16,7 @@ navVersion = "2.4.0-alpha5"
 navigationFragment = "2.7.7"
 coordinatorlayout = "1.2.0"
 glideVersion = "4.13.2"
+safeargsVersion = "2.7.7"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -39,8 +40,10 @@ androidx-navigation-fragment = { group = "androidx.navigation", name = "navigati
 androidx-coordinatorlayout = { group = "androidx.coordinatorlayout", name = "coordinatorlayout", version.ref = "coordinatorlayout" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glideVersion" }
 glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glideVersion" }
+#safeargs = { group = "androidx.navigation", name = "navigation-safe-args-gradle-plugin", version.ref = "safeargsVersion" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+#safeargsKotlin = { id = "androidx.navigation.safeargs.kotlin", version.ref = "safeargsVersion" }
 

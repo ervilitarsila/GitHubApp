@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+//    alias(libs.plugins.safeargsKotlin)
 }
 
 android {
@@ -65,6 +66,7 @@ dependencies {
     //Rxjava
     implementation(libs.rxjava.rxandroid)
     implementation(libs.rxjava.rxjava)
+//    implementation(libs.safeargs)
 
     implementation(libs.glide)
     annotationProcessor(libs.glide.compiler)

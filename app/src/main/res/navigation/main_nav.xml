@@ -14,5 +14,13 @@
         android:id="@+id/datailUserFragment"
         android:name="com.ervilitasila.githubapp.ui.userdetail.UserDetailFragment"
         android:label="fragment_datail_user"
-        tools:layout="@layout/fragment_datail_user" />
+        tools:layout="@layout/fragment_datail_user">
+        <argument
+            android:name="userName"
+            app:argType="string" />
+    </fragment>
+
+    <action
+        android:id="@+id/action_homeFragment_to_datailUserFragment"
+        app:destination="@id/datailUserFragment" />
 </navigation>

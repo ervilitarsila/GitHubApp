@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -12,8 +13,9 @@ import com.ervilitasila.githubapp.databinding.ItemUserBinding
 import com.ervilitasila.githubapp.model.User
 
 class UserAdapters(
-    var context: Context?,
-    var userList: List<User>
+    val context: Context?,
+    val userList: List<User>,
+    val itemClickListener: OnItemClickedListener? = null
 ) : RecyclerView.Adapter<UserAdapters.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val viewHolder = LayoutInflater.from(context).inflate(R.layout.item_user, parent, false)
@@ -29,13 +31,14 @@ class UserAdapters(
 
         with(holder) {
             viewBinding.userName.text = user.login
-            Glide.with(holder.itemView)
+            Glide.with(this.itemView)
                 .load(user.avatar_url)
                 .error(R.drawable.splash_bg)
                 .into(viewBinding.userProfile)
 
             viewBinding.itemUser.setOnClickListener{
                 Toast.makeText(context, user.login, Toast.LENGTH_LONG).show()
+                itemClickListener?.invoke(user.login, this)
             }
         }
     }
@@ -44,3 +47,4 @@ class UserAdapters(
         val viewBinding = ItemUserBinding.bind(itemView)
     }
 }
+typealias OnItemClickedListener = (userName: String, viewHolder: UserAdapters.ViewHolder) -> Unit
