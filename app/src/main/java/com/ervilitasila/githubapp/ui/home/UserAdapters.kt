@@ -37,7 +37,6 @@ class UserAdapters(
                 .into(viewBinding.userProfile)
 
             viewBinding.itemUser.setOnClickListener{
-                Toast.makeText(context, user.login, Toast.LENGTH_LONG).show()
                 itemClickListener?.invoke(user.login, this)
             }
         }

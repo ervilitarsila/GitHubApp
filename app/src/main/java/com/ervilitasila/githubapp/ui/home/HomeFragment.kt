@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ervilitasila.githubapp.databinding.FragmentHomeBinding
+import com.ervilitasila.githubapp.model.User
 
 class HomeFragment : Fragment() {
     private val userViewModel : UserViewModel by viewModels()
@@ -34,6 +35,7 @@ class HomeFragment : Fragment() {
 
         val layoutManager = GridLayoutManager(context, 2)
         viewBinding?.recyclerUsers?.layoutManager = layoutManager
+//        setMockData()
         userViewModel.listUsers.observe(viewLifecycleOwner, Observer { users ->
             viewBinding?.recyclerUsers?.adapter = UserAdapters(
                 context,
@@ -46,8 +48,25 @@ class HomeFragment : Fragment() {
     }
 
     private fun navigateToUserDetailFragment(userName: String) {
-//        val action = HomeFragmentDirections.actionHomeFragmentToDatailUserFragment(userName)
-//        findNavController().navigate(action)
+        val action = HomeFragmentDirections.actionHomeFragmentToUserDetailFragment(userName)
+        findNavController().navigate(action)
+    }
+
+    private fun setMockData(){
+        val user = listOf(
+            User(1, "teste1", "https://avatars.githubusercontent.com/u/1?v=4", "www.google.com", null),
+            User(1, "teste2", "https://avatars.githubusercontent.com/u/2?v=4", "www.google.com", null),
+            User(1, "teste3", "https://avatars.githubusercontent.com/u/3?v=4", "www.google.com", null),
+            User(1, "teste4", "https://avatars.githubusercontent.com/u/4?v=4", "www.google.com", null),
+        )
+
+        viewBinding?.recyclerUsers?.adapter = UserAdapters(
+            context,
+            user,
+            itemClickListener = { user, viewHolder ->
+                selectedUser = user
+                navigateToUserDetailFragment(selectedUser!!)
+            })
     }
 
     override fun onDestroyView() {

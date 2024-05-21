@@ -17,11 +17,10 @@ class UserViewModel : ViewModel() {
     init {
         getListUsers()
     }
-    fun getListUsers() {
+    private fun getListUsers() {
         viewModelScope.launch{
             try {
                 val users = UserApi.retrofitService.getUsers()
-                Log.i("etbs", "USER=${users.size}")
                 _listUsers.postValue(users)
             } catch (e: Exception) {
                 Log.e("etbs", "Erro ao obter usuários", e)

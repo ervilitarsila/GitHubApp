@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">GitHubApp</string>
-    <string name="repository">Repositórios:</string>
+    <string name="repository">Repositories:</string>
 </resources>

@@ -6,7 +6,7 @@ data class Repository(
     var language:  String,
     var forks: Int,
     var watchers: Int,
-    var visibility: Boolean,
+    var visibility: String,
     var description: String
 )
 
