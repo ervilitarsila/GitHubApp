@@ -11,6 +11,9 @@
         android:id="@+id/card_user_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:backgroundTint="@color/gray_card"
         app:cardCornerRadius="20dp">
 
@@ -35,7 +38,7 @@
                 android:id="@+id/card_user_profile"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 app:cardCornerRadius="30dp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_card"
@@ -56,36 +59,91 @@
                 android:layout_marginStart="16dp"
                 app:layout_constraintStart_toEndOf="@id/guideline_vertical_card"
                 app:layout_constraintTop_toTopOf="@id/card_user_profile"
-                app:layout_constraintBottom_toTopOf="@id/user_location"
+                app:layout_constraintBottom_toTopOf="@id/label_login"
                 android:layout_toEndOf="@+id/card_user_profile"
                 android:text="Ervili Tarsila"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/user_location"
+                android:id="@+id/label_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toEndOf="@id/guideline_vertical_card"
                 app:layout_constraintTop_toBottomOf="@id/user_name"
-                app:layout_constraintBottom_toTopOf="@id/user_company"
+                app:layout_constraintBottom_toTopOf="@id/label_location"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginVertical="4dp"
+                android:layout_toEndOf="@+id/card_user_profile"
+                android:text="@string/login_user"
+                android:textSize="12sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/user_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/label_login"
+                app:layout_constraintTop_toBottomOf="@id/label_login"
+                app:layout_constraintBottom_toTopOf="@id/label_login"
+                android:layout_marginStart="8dp"
+                android:layout_marginVertical="4dp"
+                android:layout_toEndOf="@+id/card_user_profile"
+                android:text="etbs"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/label_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/guideline_vertical_card"
+                app:layout_constraintTop_toBottomOf="@id/label_login"
+                app:layout_constraintBottom_toTopOf="@id/label_company"
+                android:layout_marginStart="16dp"
+                android:layout_marginVertical="4dp"
+                android:layout_toEndOf="@+id/card_user_profile"
+                android:text="@string/location_user"
+                android:textSize="12sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/user_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/label_location"
+                app:layout_constraintTop_toBottomOf="@id/label_location"
+                app:layout_constraintBottom_toTopOf="@id/label_location"
+                android:layout_marginStart="8dp"
+                android:layout_marginVertical="4dp"
                 android:layout_toEndOf="@+id/card_user_profile"
                 android:text="Manaus - Brazil"
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/label_company"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="4dp"
+                android:layout_marginStart="16dp"
+                android:layout_toEndOf="@+id/card_user_profile"
+                android:text="@string/company_user"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/card_user_profile"
+                app:layout_constraintStart_toEndOf="@id/guideline_vertical_card"
+                app:layout_constraintTop_toBottomOf="@id/label_location" />
+
+            <TextView
                 android:id="@+id/user_company"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/guideline_vertical_card"
-                app:layout_constraintTop_toBottomOf="@id/user_location"
-                app:layout_constraintBottom_toBottomOf="@id/card_user_profile"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginVertical="4dp"
+                android:layout_marginStart="8dp"
                 android:text="Spotify Brasil"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@id/label_company"
+                app:layout_constraintStart_toEndOf="@id/label_company"
+                app:layout_constraintTop_toBottomOf="@id/label_company" />
 
             <TextView
                 android:id="@+id/label_followers"
@@ -174,6 +232,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:textSize="16sp"
             android:text="@string/repository"
             android:textStyle="bold"/>
 

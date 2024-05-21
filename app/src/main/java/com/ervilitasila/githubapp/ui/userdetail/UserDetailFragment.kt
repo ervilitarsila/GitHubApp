@@ -49,6 +49,7 @@ class UserDetailFragment : Fragment() {
         userDetailViewModel.userSelected.observe(viewLifecycleOwner, Observer { user ->
             with(viewBinding) {
                 this?.userName?.text = user?.name
+                this?.userLogin?.text = user?.login
                 this?.userLocation?.text = user?.location
                 this?.userCompany?.text = user?.company
                 this?.userFollowers?.text = user?.followers.toString()

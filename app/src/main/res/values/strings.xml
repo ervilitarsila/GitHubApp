@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">GitHubApp</string>
     <string name="repository">Repositories:</string>
+    <string name="location_user">Location:</string>
+    <string name="company_user">Company:</string>
+    <string name="login_user">Login:</string>
 </resources>
