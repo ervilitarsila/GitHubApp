@@ -3,13 +3,10 @@ package com.ervilitasila.githubapp.ui.userdetail
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ervilitasila.githubapp.model.Repository
 import com.ervilitasila.githubapp.model.UserProfile
-import com.ervilitasila.githubapp.network.UserApi
-import com.ervilitasila.githubapp.network.UserApiService
 import com.ervilitasila.githubapp.network.UserService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

@@ -6,8 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ervilitasila.githubapp.model.User
-import com.ervilitasila.githubapp.network.UserApi
-import com.ervilitasila.githubapp.network.UserApiService
 import com.ervilitasila.githubapp.network.UserService
 import kotlinx.coroutines.launch
 
