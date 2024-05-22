@@ -9,11 +9,13 @@ import androidx.lifecycle.viewModelScope
 import com.ervilitasila.githubapp.model.Repository
 import com.ervilitasila.githubapp.model.UserProfile
 import com.ervilitasila.githubapp.network.UserApi
+import com.ervilitasila.githubapp.network.UserApiService
+import com.ervilitasila.githubapp.network.UserService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class UserDetailViewModel: ViewModel() {
+class UserDetailViewModel(private val userService: UserService): ViewModel() {
     private val _userSelected: MutableLiveData<UserProfile> by lazy {
         MutableLiveData<UserProfile>()
     }
@@ -29,7 +31,7 @@ class UserDetailViewModel: ViewModel() {
         viewModelScope.launch {
             try {
                 val user = withContext(Dispatchers.IO) {
-                    UserApi.retrofitService.getUser(userName)
+                    userService.getUser(userName)
                 }
                 _userSelected.postValue(user)
             } catch (e: Exception) {
@@ -42,7 +44,7 @@ class UserDetailViewModel: ViewModel() {
         viewModelScope.launch {
             try {
                 val listRepositories = withContext(Dispatchers.IO) {
-                    UserApi.retrofitService.getRepositories(userName)
+                    userService.getRepositories(userName)
                 }
                 Log.i("etbs", "DETAILUSER-REPOS={${listRepositories.size}}")
                 _listUserRepositories.postValue(listRepositories)

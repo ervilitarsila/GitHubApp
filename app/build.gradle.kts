@@ -66,7 +66,9 @@ dependencies {
     //Rxjava
     implementation(libs.rxjava.rxandroid)
     implementation(libs.rxjava.rxjava)
-//    implementation(libs.androidx.navigation.safeargs)
+
+    implementation(libs.koin.android)
+    implementation(libs.koin.core)
 
     implementation(libs.glide)
     annotationProcessor(libs.glide.compiler)

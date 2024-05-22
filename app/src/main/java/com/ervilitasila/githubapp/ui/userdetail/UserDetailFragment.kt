@@ -1,22 +1,20 @@
 package com.ervilitasila.githubapp.ui.userdetail
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.ervilitasila.githubapp.R
 import com.ervilitasila.githubapp.databinding.FragmentDatailUserBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class UserDetailFragment : Fragment() {
-    private val userDetailViewModel: UserDetailViewModel by viewModels()
+    private val userDetailViewModel: UserDetailViewModel by viewModel()
     private var userName: String? = null
     private var viewBinding: FragmentDatailUserBinding?= null
 

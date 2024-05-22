@@ -7,9 +7,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ervilitasila.githubapp.model.User
 import com.ervilitasila.githubapp.network.UserApi
+import com.ervilitasila.githubapp.network.UserApiService
+import com.ervilitasila.githubapp.network.UserService
 import kotlinx.coroutines.launch
 
-class UserViewModel : ViewModel() {
+class UserViewModel(private val userService: UserService) : ViewModel() {
 
     private var _listUsers = MutableLiveData<List<User>>()
     val listUsers : LiveData<List<User>> get() = _listUsers
@@ -20,7 +22,7 @@ class UserViewModel : ViewModel() {
     private fun getListUsers() {
         viewModelScope.launch{
             try {
-                val users = UserApi.retrofitService.getUsers()
+                val users = userService.getUsers()
                 _listUsers.postValue(users)
             } catch (e: Exception) {
                 Log.e("etbs", "Erro ao obter usuários", e)
