@@ -17,6 +17,9 @@ navigationFragment = "2.7.7"
 coordinatorlayout = "1.2.0"
 glideVersion = "4.13.2"
 koinVersion = "3.2.0"
+coreTestingVersion = "2.2.0"
+mockkVersion = "1.12.4"
+couroutinesTestingVersion = "1.5.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -42,6 +45,11 @@ glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "gl
 glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glideVersion" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koinVersion" }
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koinVersion" }
+androidx-core-testing = { group = "androidx.arch.core", name = "core-testing", version.ref = "coreTestingVersion" }
+mockk-testing-android = { group = "io.mockk", name = "mockk-android", version.ref = "mockkVersion" }
+mockk-testing = { group = "io.mockk", name = "mockk", version.ref = "mockkVersion" }
+mockk-testing-agent = { group = "io.mockk", name = "mockk-agent-jvm", version.ref = "mockkVersion" }
+coroutines-testing = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "couroutinesTestingVersion" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

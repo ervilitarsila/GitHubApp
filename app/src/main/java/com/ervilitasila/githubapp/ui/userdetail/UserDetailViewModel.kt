@@ -1,6 +1,5 @@
 package com.ervilitasila.githubapp.ui.userdetail
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,17 +11,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class UserDetailViewModel(private val userService: UserService): ViewModel() {
-    private val _userSelected: MutableLiveData<UserProfile> by lazy {
-        MutableLiveData<UserProfile>()
-    }
-    val userSelected: LiveData<UserProfile> get() = _userSelected
+class UserDetailViewModel(private val userService: UserService) : ViewModel() {
+    private val _userSelected = MutableLiveData<UserProfile?>()
+    val userSelected: LiveData<UserProfile?> get() = _userSelected
 
-    private val _listUserRepositories: MutableLiveData<List<Repository>> by lazy {
-        MutableLiveData<List<Repository>>()
-    }
+    private val _listUserRepositories = MutableLiveData<List<Repository>>()
     val listUserRepositories: LiveData<List<Repository>> get() = _listUserRepositories
-
 
     fun getDetailUserSelected(userName: String) {
         viewModelScope.launch {
@@ -32,7 +26,7 @@ class UserDetailViewModel(private val userService: UserService): ViewModel() {
                 }
                 _userSelected.postValue(user)
             } catch (e: Exception) {
-                Log.e("etbs", "DetailUserSelected: Erro ao obter usuários", e)
+                _userSelected.postValue(null)
             }
         }
     }
@@ -43,12 +37,10 @@ class UserDetailViewModel(private val userService: UserService): ViewModel() {
                 val listRepositories = withContext(Dispatchers.IO) {
                     userService.getRepositories(userName)
                 }
-                Log.i("etbs", "DETAILUSER-REPOS={${listRepositories.size}}")
                 _listUserRepositories.postValue(listRepositories)
             } catch (e: Exception) {
-                Log.e("etbs", "DetailUserSelected -- REPOS: Erro ao obter usuários", e)
+                _listUserRepositories.postValue(emptyList())
             }
         }
     }
-
 }

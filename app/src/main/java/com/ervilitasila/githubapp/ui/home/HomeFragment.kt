@@ -54,10 +54,10 @@ class HomeFragment : Fragment() {
 
     private fun setMockData(){
         val user = listOf(
-            User(1, "teste1", "https://avatars.githubusercontent.com/u/1?v=4", "www.google.com", null),
-            User(1, "teste2", "https://avatars.githubusercontent.com/u/2?v=4", "www.google.com", null),
-            User(1, "teste3", "https://avatars.githubusercontent.com/u/3?v=4", "www.google.com", null),
-            User(1, "teste4", "https://avatars.githubusercontent.com/u/4?v=4", "www.google.com", null),
+            User(1, "teste1", "https://avatars.githubusercontent.com/u/1?v=4", "www.google.com"),
+            User(2, "teste2", "https://avatars.githubusercontent.com/u/2?v=4", "www.google.com"),
+            User(3, "teste3", "https://avatars.githubusercontent.com/u/3?v=4", "www.google.com"),
+            User(4, "teste4", "https://avatars.githubusercontent.com/u/4?v=4", "www.google.com"),
         )
 
         viewBinding?.recyclerUsers?.adapter = UserAdapters(

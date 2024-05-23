@@ -73,4 +73,12 @@ dependencies {
     implementation(libs.glide)
     annotationProcessor(libs.glide.compiler)
 
+    // Test
+    testImplementation(libs.androidx.core.testing)
+    androidTestImplementation(libs.mockk.testing.android)
+    androidTestImplementation(libs.mockk.testing.agent)
+    testImplementation(libs.mockk.testing)
+    testImplementation(libs.mockk.testing.agent)
+    testImplementation(libs.coroutines.testing)
+
 }

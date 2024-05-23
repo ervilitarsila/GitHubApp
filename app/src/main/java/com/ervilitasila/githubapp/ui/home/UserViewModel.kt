@@ -17,13 +17,13 @@ class UserViewModel(private val userService: UserService) : ViewModel() {
     init {
         getListUsers()
     }
-    private fun getListUsers() {
+    fun getListUsers() {
         viewModelScope.launch{
             try {
                 val users = userService.getUsers()
                 _listUsers.postValue(users)
             } catch (e: Exception) {
-                Log.e("etbs", "Erro ao obter usuários", e)
+                _listUsers.postValue(emptyList())
             }
         }
     }
