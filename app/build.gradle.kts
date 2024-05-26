@@ -76,9 +76,8 @@ dependencies {
     // Test
     testImplementation(libs.androidx.core.testing)
     androidTestImplementation(libs.mockk.testing.android)
-    androidTestImplementation(libs.mockk.testing.agent)
     testImplementation(libs.mockk.testing)
-    testImplementation(libs.mockk.testing.agent)
     testImplementation(libs.coroutines.testing)
+    debugImplementation(libs.fragment.testing)
 
 }

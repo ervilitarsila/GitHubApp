@@ -13,8 +13,8 @@ import com.ervilitasila.githubapp.databinding.ItemUserBinding
 import com.ervilitasila.githubapp.model.User
 
 class UserAdapters(
-    val context: Context?,
-    val userList: List<User>,
+    private val context: Context?,
+    private val userList: List<User>,
     val itemClickListener: OnItemClickedListener? = null
 ) : RecyclerView.Adapter<UserAdapters.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

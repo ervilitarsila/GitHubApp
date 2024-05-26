@@ -139,7 +139,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="4dp"
                 android:layout_marginStart="8dp"
-                android:text="Spotify Brasil"
+                android:text="Company"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@id/label_company"
                 app:layout_constraintStart_toEndOf="@id/label_company"
