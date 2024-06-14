@@ -8,6 +8,7 @@ import com.ervilitasila.githubapp.network.UserService
 import com.ervilitasila.githubapp.ui.userdetail.UserDetailViewModel
 import io.mockk.coEvery
 import io.mockk.mockk
+import io.mockk.unmockkAll
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before
@@ -18,6 +19,7 @@ import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.Dispatchers
 import org.junit.After
+import org.junit.AfterClass
 import org.junit.Rule
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
@@ -45,7 +47,7 @@ class UserDetailViewModelTest {
     }
 
     @Test
-    fun `GIVEN userService WHEN fetchUserProfile is successful THEN update userProfile LiveData`() = runTest {
+    fun getDetailUserSelected_loginUser_detailUserProfile() = runTest {
         val userProfile = UserProfile(
             login = "testUser",
             avatar_url = "https://example.com/user.jpg",
@@ -81,7 +83,7 @@ class UserDetailViewModelTest {
     }
 
     @Test
-    fun `GIVEN userService WHEN fetchUserProfile fails THEN update userProfile LiveData with null`() = runTest {
+    fun getDetailUserSelected_loginUser_returnsNull() = runTest {
         coEvery { userService.getUser("testUser") } throws Exception("Network error")
 
         viewModel.getDetailUserSelected("testUser")
@@ -92,7 +94,7 @@ class UserDetailViewModelTest {
 
 
     @Test
-    fun `GIVEN userService WHEN fetchRepositories is successful THEN update listUserRepositories LiveData`() = runTest {
+    fun getDetailUserSelectedRepositories_userName_returnsListOfRepositories() = runTest {
         val userName = "testUser"
         val repositories = listOf(
             Repository(id = 1, name = "repo1", language = "Kotlin", forks = 10, watchers = 5, visibility = "public", description = "Repo 1 description"),
@@ -122,7 +124,7 @@ class UserDetailViewModelTest {
     }
 
     @Test
-    fun `GIVEN userService WHEN fetchRepositories fails THEN update listUserRepositories LiveData with empty list`() = runTest {
+    fun getDetailUserSelectedRepositories_networkError_returnsEmptyList() = runTest {
         val userName = "testUser"
 
         coEvery { userService.getRepositories(userName) } throws Exception("Network error")
