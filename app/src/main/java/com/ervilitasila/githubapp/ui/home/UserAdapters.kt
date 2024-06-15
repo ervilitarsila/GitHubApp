@@ -4,8 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ervilitasila.githubapp.R
@@ -14,9 +12,10 @@ import com.ervilitasila.githubapp.model.User
 
 class UserAdapters(
     private val context: Context?,
-    private val userList: List<User>,
+    private var userList: List<User>,
     val itemClickListener: OnItemClickedListener? = null
 ) : RecyclerView.Adapter<UserAdapters.ViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val viewHolder = LayoutInflater.from(context).inflate(R.layout.item_user, parent, false)
         return ViewHolder(viewHolder)
@@ -36,14 +35,20 @@ class UserAdapters(
                 .error(R.drawable.splash_bg)
                 .into(viewBinding.userProfile)
 
-            viewBinding.itemUser.setOnClickListener{
+            viewBinding.itemUser.setOnClickListener {
                 itemClickListener?.invoke(user.login, this)
             }
         }
+    }
+
+    fun updateUsers(newUsers: List<User>) {
+        userList = newUsers
+        notifyDataSetChanged()
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val viewBinding = ItemUserBinding.bind(itemView)
     }
 }
+
 typealias OnItemClickedListener = (userName: String, viewHolder: UserAdapters.ViewHolder) -> Unit

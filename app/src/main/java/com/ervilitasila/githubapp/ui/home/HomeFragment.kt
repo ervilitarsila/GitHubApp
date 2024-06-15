@@ -1,6 +1,8 @@
 package com.ervilitasila.githubapp.ui.home
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -35,38 +37,40 @@ class HomeFragment : Fragment() {
 
         val layoutManager = GridLayoutManager(context, 2)
         viewBinding?.recyclerUsers?.layoutManager = layoutManager
-//        setMockData()
+
+        val adapter = UserAdapters(
+            context,
+            listOf(),
+            itemClickListener = { user, viewHolder ->
+                selectedUser = user
+                navigateToUserDetailFragment(selectedUser!!)
+            }
+        )
+        viewBinding?.recyclerUsers?.adapter = adapter
+
         userViewModel.listUsers.observe(viewLifecycleOwner, Observer { users ->
-            viewBinding?.recyclerUsers?.adapter = UserAdapters(
-                context,
-                users,
-                itemClickListener = { user, viewHolder ->
-                    selectedUser = user
-                    navigateToUserDetailFragment(selectedUser!!)
-                })
+            adapter.updateUsers(users)
+        })
+
+        viewBinding?.searchIcon?.setOnClickListener {
+            val query = viewBinding?.searchInput?.text.toString()
+            userViewModel.filterUsers(query)
+        }
+
+        viewBinding?.searchInput?.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                val query = s.toString()
+                userViewModel.filterUsers(query)
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
     }
 
     private fun navigateToUserDetailFragment(userName: String) {
         val action = HomeFragmentDirections.actionHomeFragmentToUserDetailFragment(userName)
         findNavController().navigate(action)
-    }
-
-    private fun setMockData(){
-        val user = listOf(
-            User(1, "teste1", "https://avatars.githubusercontent.com/u/1?v=4", "www.google.com"),
-            User(2, "teste2", "https://avatars.githubusercontent.com/u/2?v=4", "www.google.com"),
-            User(3, "teste3", "https://avatars.githubusercontent.com/u/3?v=4", "www.google.com"),
-            User(4, "teste4", "https://avatars.githubusercontent.com/u/4?v=4", "www.google.com"),
-        )
-
-        viewBinding?.recyclerUsers?.adapter = UserAdapters(
-            context,
-            user,
-            itemClickListener = { user, viewHolder ->
-                selectedUser = user
-                navigateToUserDetailFragment(selectedUser!!)
-            })
     }
 
     override fun onDestroyView() {
