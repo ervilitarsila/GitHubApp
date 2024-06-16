@@ -7,24 +7,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.ervilitasila.githubapp.R
 import com.ervilitasila.githubapp.databinding.FragmentHomeBinding
-import com.ervilitasila.githubapp.model.User
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
-    private val userViewModel : UserViewModel by viewModel()
+    private val userViewModel: UserViewModel by viewModel()
     private var viewBinding: FragmentHomeBinding? = null
     private var selectedUser: String? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        if(selectedUser != null) {
+        if (selectedUser != null) {
             postponeEnterTransition()
         }
 
@@ -52,6 +53,17 @@ class HomeFragment : Fragment() {
             adapter.updateUsers(users)
         })
 
+        userViewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
+            viewBinding?.loadingFrame?.visibility = if (isLoading) View.VISIBLE else View.GONE
+            viewBinding?.progressBar?.visibility = if (isLoading) View.VISIBLE else View.GONE
+        })
+
+        userViewModel.errorMessage.observe(viewLifecycleOwner, Observer { errorMessage ->
+            if (errorMessage != null) {
+                showErrorDialog("Users  Loading Failed. Please try again.")
+            }
+        })
+
         viewBinding?.searchIcon?.setOnClickListener {
             val query = viewBinding?.searchInput?.text.toString()
             userViewModel.filterUsers(query)
@@ -71,6 +83,16 @@ class HomeFragment : Fragment() {
     private fun navigateToUserDetailFragment(userName: String) {
         val action = HomeFragmentDirections.actionHomeFragmentToUserDetailFragment(userName)
         findNavController().navigate(action)
+    }
+
+    private fun showErrorDialog(message: String) {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Error")
+            .setMessage(message)
+            .setPositiveButton("Try Again") { _, _ ->
+                userViewModel.getListUsers()
+            }
+            .show()
     }
 
     override fun onDestroyView() {
