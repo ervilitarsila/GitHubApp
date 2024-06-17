@@ -4,4 +4,7 @@
     <string name="location_user">Location:</string>
     <string name="company_user">Company:</string>
     <string name="login_user">Login:</string>
+    <string name="search_user">Search user</string>
+    <string name="search_icon">Search icon</string>
+    <string name="no_data_found">No data found</string>
 </resources>

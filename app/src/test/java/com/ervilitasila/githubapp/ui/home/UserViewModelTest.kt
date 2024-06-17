@@ -39,13 +39,13 @@ class UserViewModelTest {
     }
 
     @Test
-    fun `GIVEN service WHEN call service THEN check if is called once at viewmodel initialization`() {
+    fun callServiceAtViewModelInitialization_serviceCall_expectedCallOnce() {
         coVerify(exactly = 1) { service.getUsers() }
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun `GIVEN mocked service results WHEN get list of users from view model THEN result as expected`() = runTest {
+    fun getListUsers_mockedServiceResults_expectedResult() = runTest {
         val expectedUsers = listOf(
             User(id = 1, login = "user1", avatar_url = "", url = ""),
             User(id = 2, login = "user2", avatar_url = "", url = "")
@@ -63,7 +63,7 @@ class UserViewModelTest {
     }
 
     @Test
-    fun `GIVEN service WHEN getListUsers fails THEN update LiveData with empty list`() = runTest {
+    fun getListUsers_serviceFails_emptyList() = runTest {
         val exception = Exception("Network error")
         coEvery { service.getUsers() } throws exception
 
