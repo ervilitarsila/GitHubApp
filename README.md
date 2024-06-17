@@ -18,6 +18,10 @@ GitHub App built with Kotlin and MVVM
   </a>
 </p>
 
+## About the Project
+
+Discover the world of GitHub users and repositories with the powerful GitHubApp. Seamlessly integrated with GitHub's public API, the app brings a wealth of information right to your fingertips.
+
 ## Download
 
 Go to the [releases page](https://github.com/ervilitarsila/GitHubApp/releases) to download the latest available apk.
@@ -26,28 +30,29 @@ Go to the [releases page](https://github.com/ervilitarsila/GitHubApp/releases) t
 
 <p align="center">
   <img src="image/GitHubApp_Screenshots.png" > 
+  <img src="https://github.com/ervilitarsila/GitHubApp/blob/master/image/GitHubApp.gif" width="270" height="575">
 </p>
 
 ## Features
-<img src="https://github.com/ervilitarsila/GitHubApp/blob/master/image/GitHubApp.gif" align="right" width="270"></img>
-- [x] Home
-- [x] Details User
-- [x] List User Repositories
-- [ ] Search User
 
+- **Users List:** Easily browse and list GitHub users with detailed profiles.
+- **Users Search:** Quickly find users by username, making it easier than ever to connect with developers.
+- **User Details:** View comprehensive information about specific users, including company, location, and more.
+- **Repository Listings:** Explore and list repositories from any GitHub user, complete with detailed information about each repository.
+      
+## Technologies Used
 
-## Development Roadmap
-
-- [x] [Kotlin](https://kotlinlang.org/)
-- [x] [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
-- [x] [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
-- [x] [Coroutines](https://developer.android.com/topic/libraries/architecture/coroutines)
-- [x] [Koin Dependency Injection](https://insert-koin.io/docs/quickstart/android/)
-- [x] [Navigation Component](https://developer.android.com/guide/navigation)
-- [x] [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
-- [x] [Retrofit](https://developer.android.com/codelabs/basic-android-kotlin-compose-getting-data-internet#4)
-- [x] [JUnit](https://developer.android.com/training/testing/local-tests)
-- [x] [Mockito](https://site.mockito.org/)
+- **Language:** [Kotlin](https://kotlinlang.org/)
+- **Design Pattern:** [MVVM](https://learn.microsoft.com/pt-br/dotnet/architecture/maui/mvvm)
+- **Dependency Injection:** [Koin](https://insert-koin.io/docs/quickstart/android/)
+- **Jetpack Components:** [LiveData](https://developer.android.com/topic/libraries/architecture/livedata), [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel), [Navigation Component](https://developer.android.com/guide/navigation)
+- **Concurrency:** [Coroutines](https://developer.android.com/topic/libraries/architecture/coroutines)
+- **Image Loading:** [Glide](https://bumptech.github.io/glide/)
+- **Build System::** [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
+- **Networking::** [Retrofit](https://developer.android.com/codelabs/basic-android-kotlin-compose-getting-data-internet#4)
+- **Tests Unit:** [JUnit](https://developer.android.com/training/testing/local-tests), [Mockito](https://site.mockito.org/)
+- **Tests UI:** [Espresso](https://developer.android.com/training/testing/espresso)
+- **IDE:** [Android Studio Iguana | 2023.2.1 Patch 1](https://developer.android.com/studio/releases/past-releases/as-iguana-release-notes)
 
 ## Find this project useful?
 
@@ -55,9 +60,6 @@ Support it by joining [stargazers](https://github.com/ervilitarsila/GitHubApp/st
 
 ## Author
 
-<a href="https://github.com/ervilitarsila" style="text-decoration: none;">
-  <div style="width: 48px; height: 48px; overflow: hidden; border-radius: 50%; border: 1px solid #ccc; display: inline-block;">
-    <img src="https://avatars.githubusercontent.com/u/9055112?v=4" width="48" style="border-radius: 50%; display: block;">
-  </div>
-  <sub>@ervilitarsila</sub>
-</a>
+**[Ervili Tarsila](https://github.com/ervilitarsila)**  is a Senior Android Engineer with 12 years of experience in software development, specializing in Android Development for 6 years, creating customized and efficient solutions for clients. I founded a startup. I hold a Master's degree in Software Engineering focusing on Mobile Application Project Estimation and a Bachelor's degree in Computer Science.
+
+
