@@ -49,7 +49,9 @@ class HomeFragmentTest {
     }
 
     @Test
-    fun verifyLogoIsDisplayed() {
+    fun verifyLogoAndSearchIsDisplayed() {
         onView(withId(R.id.logo_github)).check(matches(isDisplayed()))
+        onView(withId(R.id.search_input)).check(matches(isDisplayed()))
+        onView(withId(R.id.search_icon)).check(matches(isDisplayed()))
     }
 }

@@ -60,4 +60,11 @@ class UserDetailViewModel(private val userService: UserService) : ViewModel() {
             }
         }
     }
+
+    fun setUser(user: UserProfile) {
+        _userSelected.value = user
+    }
+    fun setListUserRepositories(repositories: List<Repository>) {
+        _listUserRepositories.value = repositories
+    }
 }

@@ -16,7 +16,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class UserDetailFragment : Fragment() {
-    private val userDetailViewModel: UserDetailViewModel by viewModel()
+    val userDetailViewModel: UserDetailViewModel by viewModel()
     private var userName: String? = null
     private var viewBinding: FragmentDatailUserBinding? = null
 
@@ -51,9 +51,7 @@ class UserDetailFragment : Fragment() {
 
         userDetailViewModel.userSelected.observe(viewLifecycleOwner, Observer { user ->
             with(viewBinding) {
-                if (user == null) {
-                    showErrorDialog("User not found")
-                } else {
+                if (user != null) {
                     this?.userName?.text = user.name
                     this?.userLogin?.text = user.login
                     this?.userLocation?.text = user.location
